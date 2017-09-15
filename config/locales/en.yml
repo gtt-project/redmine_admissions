@@ -1,0 +1,3 @@
+en:
+  field_admission_assigned_role: Role for users joining this project
+  label_admission_disabled: None - self joining is not allowed
