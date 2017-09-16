@@ -1,0 +1,30 @@
+<% if User.current.logged? and RedmineAdmissions.enabled? @project %>
+
+  <h3><%= t '.heading' %></h3>
+
+  <% if RedmineAdmissions.can_join? @project %>
+
+    <p><%= t '.join_info' %></p>
+    <ul>
+      <li><%= link_to t('.join'), admissions_path(@project), method: :post %></li>
+    </ul>
+
+  <% elsif RedmineAdmissions.can_leave? @project  %>
+
+    <p><%= t '.leave_info' %></p>
+    <ul>
+      <li><%= link_to t('.leave'), admissions_path(@project), method: :delete %></li>
+    </ul>
+
+  <% else %>
+
+    <p><%= t '.generic_info', role: @project.admission_assigned_role.name %></p>
+
+    <% if authorize_for 'projects', 'update' %>
+      <ul>
+        <li><%= link_to t('.change'), settings_project_path(@project) %></li>
+      </ul>
+    <% end %>
+
+  <% end %>
+<% end %>

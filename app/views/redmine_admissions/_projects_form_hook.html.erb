@@ -1,2 +1,7 @@
-<p><%= form.select :admission_assigned_role_id, Role.givable.map{|r| [r.name, r.id]}, include_blank: l(:label_admission_disabled) %></p>
+<p>
+  <%= form.select :admission_assigned_role_id, Role.givable.map{|r| [r.name, r.id]}, include_blank: l(:label_admission_disabled) %>
+  <% if !form.object.is_public? %>
+    <em><%= t '.hint_needs_public_project' %></em>
+  <% end %>
+</p>
 
