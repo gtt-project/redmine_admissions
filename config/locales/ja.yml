@@ -1,14 +1,14 @@
 ja:
-  field_admission_assigned_role: Role for new users joining this project
-  label_admission_disabled: None - self joining is not allowed
+  field_admission_assigned_role: このプロジェクトに参加する新規ユーザーのロール
+  label_admission_disabled: なし - ユーザー自身による参加は不許可
 
   redmine_admissions:
     projects_form_hook:
-      hint_needs_public_project: Self-joining also requires the project to be public!
+      hint_needs_public_project: ユーザー自身が参加するにはプロジェクトが公開されている必要があります！
     projects_show_sidebar_bottom_hook:
-      generic_info: This project can be joined by other users as %{role} without the help of an administrator.
-      heading: Admission
-      join: Join this project
-      join_info: "To join this project, click the link below:"
-      leave: Leave this project
-      leave_info: "You are currently a member of this project. To leave it, click the link below:"
+      generic_info: このプロジェクトには %{role} に従ってシステム管理者による手続き無しに他のユーザーが参加できます。
+      heading: 参加登録
+      join: このプロジェクトに参加
+      join_info: "このプロジェクトに参加するには下記リンクをクリックしてください："
+      leave: このプロジェクトを離脱する
+      leave_info: "あなたは現在このプロジェクトのメンバーです。離脱するには下記リンクをクリックしてください："
