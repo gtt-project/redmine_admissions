@@ -12,3 +12,4 @@ en:
       join_info: "To join this project, click the link below:"
       leave: Leave this project
       leave_info: "You are currently a member of this project. To leave it, click the link below:"
+      login_info: "In order to join this project, please login or register a new account first:"
