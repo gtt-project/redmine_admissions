@@ -1,4 +1,5 @@
-<% if User.current.logged? and RedmineAdmissions.enabled? @project %>
+<% if RedmineAdmissions.enabled? @project %>
+<% if User.current.logged? %>
 
   <h3><%= t '.heading' %></h3>
 
@@ -27,4 +28,14 @@
     <% end %>
 
   <% end %>
+
+<% else %>
+
+    <p><%= t '.login_info' %></p>
+    <ul>
+      <li><%= link_to t(:button_login), signin_path %></li>
+      <li><%= link_to t(:label_register), register_path %></li>
+    </ul>
+
+<% end %>
 <% end %>
