@@ -1,12 +1,16 @@
 module RedmineAdmissions
   module Patches
     module ProjectPatch
+
       def self.apply
         unless Project < self
           Project.prepend self
+
           Project.class_eval do
-            belongs_to :admission_assigned_role, class_name: 'Role'
-            safe_attributes :admission_assigned_role_id
+            has_and_belongs_to_many :admission_assigned_roles,
+              class_name: "Role",
+              join_table: "admission_assigned_roles"
+            safe_attributes :admission_assigned_role_ids
           end
         end
       end

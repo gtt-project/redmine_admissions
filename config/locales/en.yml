@@ -1,5 +1,7 @@
 en:
   field_admission_assigned_role: Role for new users joining this project
+  label_admission: Self joining
+  label_admission_roles: Roles available for new users joining this project
   label_admission_disabled: None - self joining is not allowed
 
   redmine_admissions:

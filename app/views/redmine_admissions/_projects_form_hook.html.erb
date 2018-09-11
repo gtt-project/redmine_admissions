@@ -1,5 +1,24 @@
 <p>
-  <%= form.select :admission_assigned_role_id, Role.givable.map{|r| [r.name, r.id]}, include_blank: l(:label_admission_disabled) %>
+  <label><%= l :label_admission %></label>
+    <label class="block">
+      <%= radio_button_tag 'admission_enabled', 0, form.object.admission_assigned_role_ids.blank?, id: 'project_admission_disabled',
+            :data => {:disables => '.project_admission_roles input'} %>
+      <%= l(:label_admission_disabled) %>
+    </label>
+    <label class="block">
+      <%= radio_button_tag 'admission_enabled', 1, !form.object.admission_assigned_role_ids.blank?, id: 'project_admission_enabled',
+            :data => {:enables => '.project_admission_roles input'} %>
+      <%= l(:label_admission_roles) %>:
+    </label>
+    <% role_ids = form.object.admission_assigned_role_ids %>
+    <% Role.givable.sorted.each do |role| %>
+      <label class="block project_admission_roles" style="padding-left:2em;">
+        <%= check_box_tag 'project[admission_assigned_role_ids][]', role.id, role_ids.include?(role.id), :id => nil %>
+        <%= role.name %>
+      </label>
+    <% end %>
+    <%= hidden_field_tag 'project[admission_assigned_role_ids][]', '' %>
+
   <% if !form.object.is_public? %>
     <em><%= t '.hint_needs_public_project' %></em>
   <% end %>
