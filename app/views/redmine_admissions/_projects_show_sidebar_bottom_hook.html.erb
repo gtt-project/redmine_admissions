@@ -7,7 +7,13 @@
 
     <p><%= t '.join_info' %></p>
     <ul>
-      <li><%= link_to t('.join'), admissions_path(@project), method: :post %></li>
+      <% if @project.admission_assigned_roles.one? %>
+        <li><%= link_to t('.join'), admissions_path(@project, role_id: @project.admission_assigned_roles.first.id), method: :post %></li>
+      <% else %>
+        <% @project.admission_assigned_roles.each do |role| %>
+          <li><%= link_to t('.join_as', name: role.name), admissions_path(@project, role_id: role.id), method: :post %></li>
+        <% end %>
+      <% end %>
     </ul>
 
   <% elsif RedmineAdmissions.can_leave? @project  %>
@@ -19,7 +25,7 @@
 
   <% else %>
 
-    <p><%= t '.generic_info', role: @project.admission_assigned_role.name %></p>
+    <p><%= t '.generic_info', roles: @project.admission_assigned_roles.pluck(:name).to_sentence %></p>
 
     <% if authorize_for 'projects', 'update' %>
       <ul>

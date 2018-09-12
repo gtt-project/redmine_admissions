@@ -14,7 +14,8 @@ class AdmissionsTest < Redmine::IntegrationTest
     refute RedmineAdmissions.enabled?(@project)
     refute RedmineAdmissions.can_join?(@project, user: @user)
 
-    @project.update_columns admission_assigned_role_id: @role.id, is_public: true
+    @project.update_columns is_public: true
+    @project.admission_assigned_roles << @role
 
     assert RedmineAdmissions.enabled?(@project)
     assert RedmineAdmissions.can_join?(@project, user: @user)
@@ -25,8 +26,13 @@ class AdmissionsTest < Redmine::IntegrationTest
     assert_response :success
     assert_select 'a', /join this project/i
 
+    # should not allow unconfigured roles
+    assert_no_difference 'Member.count' do
+      post '/projects/ecookbook/admissions', role_id: 2
+    end
+
     assert_difference 'Member.count' do
-      post '/projects/ecookbook/admissions'
+      post '/projects/ecookbook/admissions', role_id: 1
     end
 
     refute RedmineAdmissions.can_join?(@project, user: @user)

@@ -7,7 +7,7 @@ module RedmineAdmissions
   end
 
   def self.enabled?(project)
-    project.is_public? and project.admission_assigned_role.present?
+    project.is_public? and project.admission_assigned_roles.any?
   end
 
   def self.can_join?(project, user: User.current)
@@ -24,7 +24,7 @@ module RedmineAdmissions
       user.memberships.where(project: project).one? and
       m = user.memberships.where(project: project).includes(:roles).first and
       m.roles.one? and
-      m.roles.first == project.admission_assigned_role
+      project.admission_assigned_roles.include?(m.roles.first)
   end
 end
 

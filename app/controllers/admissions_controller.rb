@@ -3,11 +3,13 @@ class AdmissionsController < ApplicationController
   accept_api_auth :create, :destroy
 
   def create
-    if RedmineAdmissions.can_join?(@project)
+    if RedmineAdmissions.can_join?(@project) and
+        role = @project.admission_assigned_roles.find(params[:role_id])
+
       Member.create_principal_memberships(
         User.current,
         project_ids: @project.id,
-        role_ids: @project.admission_assigned_role_id
+        role_ids: role.id
       )
       respond_to do |format|
         format.html { redirect_to project_path(@project) }
