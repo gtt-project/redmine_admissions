@@ -9,6 +9,8 @@ en:
       hint_needs_public_project: Self-joining also requires the project to be public!
     projects_show_sidebar_bottom_hook:
       change: Change
+      change_role_info: "To change your Role in this project click below:"
+      switch_to_role: "Change my role to %{name}"
       generic_info: This project can be joined by other users as %{roles} without the help of an administrator.
       heading: Admission
       join: Join this project

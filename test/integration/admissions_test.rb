@@ -22,6 +22,8 @@ class AdmissionsTest < Redmine::IntegrationTest
 
     log_user("dlopper", "foo")
 
+    # joining
+
     get "/projects/ecookbook"
     assert_response :success
     assert_select 'a', /join this project/i
@@ -44,6 +46,8 @@ class AdmissionsTest < Redmine::IntegrationTest
     assert_response :success
     assert_select 'a', /leave this project/i
 
+    # leaving
+
     assert_difference 'Member.count', -1 do
       delete '/projects/ecookbook/admissions'
     end
@@ -52,6 +56,38 @@ class AdmissionsTest < Redmine::IntegrationTest
     assert_response :success
     assert_select 'a', /join this project/i
     assert RedmineAdmissions.can_join?(@project, user: @user)
+  end
+
+  test "should be able to change project role" do
+    another_role = Role.find 2
+    @project.update_columns is_public: true
+    @project.admission_assigned_roles << @role
+    @project.admission_assigned_roles << another_role
+
+    log_user("dlopper", "foo")
+
+    get "/projects/ecookbook"
+    assert_response :success
+    assert_select 'a', /join this project as a #{@role.name}/i
+    assert_select 'a', /join this project as a #{another_role.name}/i
+
+    assert_difference 'Member.count' do
+      post '/projects/ecookbook/admissions', role_id: @role.id
+    end
+
+    get "/projects/ecookbook"
+    assert_response :success
+    assert_select 'a', /leave this project/i
+    assert_select 'a', /change my role to #{another_role.name}/i
+
+    assert_no_difference 'Member.count' do
+      put "/projects/ecookbook/admissions", role_id: another_role.id
+    end
+
+    get "/projects/ecookbook"
+    assert_response :success
+    assert_select 'a', /leave this project/i
+    assert_select 'a', /change my role to #{@role.name}/i
   end
 
   test 'should not be able to join unconfigured project' do

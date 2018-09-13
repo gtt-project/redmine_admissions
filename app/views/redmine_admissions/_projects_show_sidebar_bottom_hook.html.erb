@@ -16,24 +16,41 @@
       <% end %>
     </ul>
 
-  <% elsif RedmineAdmissions.can_leave? @project  %>
-
-    <p><%= t '.leave_info' %></p>
-    <ul>
-      <li><%= link_to t('.leave'), admissions_path(@project), method: :delete %></li>
-    </ul>
-
   <% else %>
 
-    <p><%= t '.generic_info', roles: @project.admission_assigned_roles.pluck(:name).to_sentence %></p>
+    <% if RedmineAdmissions.can_leave? @project  %>
 
-    <% if authorize_for 'projects', 'update' %>
+      <p><%= t '.leave_info' %></p>
       <ul>
-        <li><%= link_to t('.change'), settings_project_path(@project) %></li>
+        <li><%= link_to t('.leave'), admissions_path(@project), method: :delete %></li>
       </ul>
+
+      <% if RedmineAdmissions.can_change_role? @project %>
+
+        <p><%= t '.change_role_info' %></p>
+        <ul>
+          <% @project.admission_assigned_roles.each do |role| %>
+            <% next if User.current.roles_for_project(@project).include? role  %>
+            <li><%= link_to t('.switch_to_role', name: role.name), admissions_path(@project, role_id: role.id), method: :put %></li>
+          <% end %>
+        </ul>
+
+      <% end %>
+
+    <% else  %>
+      <p><%= t '.generic_info', roles: @project.admission_assigned_roles.pluck(:name).to_sentence %></p>
+
+      <% if authorize_for 'projects', 'update' %>
+        <ul>
+          <li><%= link_to t('.change'), settings_project_path(@project) %></li>
+        </ul>
+      <% end %>
     <% end %>
 
+
+
   <% end %>
+
 
 <% else %>
 

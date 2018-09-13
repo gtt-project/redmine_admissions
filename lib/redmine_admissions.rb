@@ -26,6 +26,11 @@ module RedmineAdmissions
       m.roles.one? and
       project.admission_assigned_roles.include?(m.roles.first)
   end
+
+  def self.can_change_role?(project, user: User.current)
+    can_leave?(project, user: user) and
+      project.admission_assigned_roles.many?
+  end
 end
 
 require 'redmine_admissions/view_hooks'
