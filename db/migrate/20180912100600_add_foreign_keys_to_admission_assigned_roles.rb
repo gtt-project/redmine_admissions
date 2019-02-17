@@ -1,4 +1,4 @@
-class AddForeignKeysToAdmissionAssignedRoles < ActiveRecord::Migration
+class AddForeignKeysToAdmissionAssignedRoles < ActiveRecord::Migration[5.2]
   def change
     add_foreign_key :admission_assigned_roles, :projects,
       column: :project_id, on_delete: :cascade
