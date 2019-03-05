@@ -30,11 +30,11 @@ class AdmissionsTest < Redmine::IntegrationTest
 
     # should not allow unconfigured roles
     assert_no_difference 'Member.count' do
-      post '/projects/ecookbook/admissions', role_id: 2
+      post '/projects/ecookbook/admissions', params: {role_id: 2}
     end
 
     assert_difference 'Member.count' do
-      post '/projects/ecookbook/admissions', role_id: 1
+      post '/projects/ecookbook/admissions', params: {role_id: 1}
     end
 
     refute RedmineAdmissions.can_join?(@project, user: @user)
@@ -72,7 +72,7 @@ class AdmissionsTest < Redmine::IntegrationTest
     assert_select 'a', /join this project as a #{another_role.name}/i
 
     assert_difference 'Member.count' do
-      post '/projects/ecookbook/admissions', role_id: @role.id
+      post '/projects/ecookbook/admissions', params: {role_id: @role.id}
     end
 
     get "/projects/ecookbook"
@@ -81,7 +81,7 @@ class AdmissionsTest < Redmine::IntegrationTest
     assert_select 'a', /change my role to #{another_role.name}/i
 
     assert_no_difference 'Member.count' do
-      put "/projects/ecookbook/admissions", role_id: another_role.id
+      put "/projects/ecookbook/admissions", params: {role_id: another_role.id}
     end
 
     get "/projects/ecookbook"
