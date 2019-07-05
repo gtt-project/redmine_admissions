@@ -46,6 +46,9 @@ class AdmissionsTest < Redmine::IntegrationTest
     assert_response :success
     assert_select 'a', /leave this project/i
 
+    get '/projects/ecookbook/admissions'
+    assert_response :redirect
+
     # leaving
 
     assert_difference 'Member.count', -1 do
@@ -56,6 +59,9 @@ class AdmissionsTest < Redmine::IntegrationTest
     assert_response :success
     assert_select 'a', /join this project/i
     assert RedmineAdmissions.can_join?(@project, user: @user)
+
+    get '/projects/ecookbook/admissions'
+    assert_response :missing
   end
 
   test "should be able to change project role" do

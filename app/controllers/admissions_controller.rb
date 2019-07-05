@@ -61,7 +61,7 @@ class AdmissionsController < ApplicationController
         format.any { head 200 }
       end
     else
-      render_error status: 422, message: "cannot show this project"
+      render_error status: 404, message: "haven't joined this project"
     end
   end
 
