@@ -1,6 +1,6 @@
 class AdmissionsController < ApplicationController
   before_action :find_project_by_project_id
-  accept_api_auth :create, :destroy
+  accept_api_auth :create, :destroy, :show
 
   def create
     if RedmineAdmissions.can_join?(@project) and
@@ -51,6 +51,17 @@ class AdmissionsController < ApplicationController
       end
     else
       render_error status: 422, message: "cannot leave this project"
+    end
+  end
+
+  def show
+    if RedmineAdmissions.is_joined?(@project)
+      respond_to do |format|
+        format.html { redirect_to project_path(@project) }
+        format.any { head 200 }
+      end
+    else
+      render_error status: 422, message: "cannot show this project"
     end
   end
 

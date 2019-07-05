@@ -31,6 +31,10 @@ module RedmineAdmissions
     can_leave?(project, user: user) and
       project.admission_assigned_roles.many?
   end
+
+  def self.is_joined?(project, user: User.current)
+    can_leave?(project, user: user)
+  end
 end
 
 require 'redmine_admissions/view_hooks'
