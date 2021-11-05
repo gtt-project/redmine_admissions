@@ -2,43 +2,50 @@
 
 This plugin allows users to self-join selected Projects.
 
-
 ## Requirements
 
  - Redmine >= 3.4.0
 
 ## Installation
 
-To install Redmine admissions plugin, download or clone this repository in your Redmine installation plugins directory! 
+To install Redmine Chatwoot plugin, download or clone this repository in your Redmine installation plugins directory!
 
-`git clone https://hub.georepublic.net/gtt/redmine_admissions.git`
+```
+cd path/to/plugin/directory
+git clone https://github.com/gtt-project/redmine_admissions.git
+```
 
 Then run
 
-`bundle install`
+```
+bundle install
+bundle exec rake redmine:plugins:migrate
+```
 
-followed by
+After restarting Redmine, you should be able to see the Redmine Chatwoot plugin in the Plugins page.
 
-`bundle exec rake redmine:plugins:migrate`
+More information on installing (and uninstalling) Redmine plugins can be found here: http://www.redmine.org/wiki/redmine/Plugins
 
+## How to use
 
-After restarting Redmine, you should be able to see the Redmine Resource Manager in the Plugins page.
+TBD
 
-More information on installing Redmine plugins can be found here: http://www.redmine.org/wiki/redmine/Plugins
+## Contributing and Support
 
+The GTT Project appreciates any [contributions](https://github.com/gtt-project/.github/blob/main/CONTRIBUTING.md)! Feel free to contact us for [reporting problems and support](https://github.com/gtt-project/.github/blob/main/CONTRIBUTING.md).
 
 ## Version History
 
-  - 1.1.0 Adds Japanese translation
-  
+See [all releases](https://github.com/gtt-project/redmine_admissions/releases) with release notes.
 
 ## Authors
 
-  - [Jens Kraemer](https://github.com/jkraemer)
-
-  - [Daniel Kastl](https://github.com/dkastl)
-
+- [Jens Kraemer](https://github.com/jkraemer)
+- [Daniel Kastl](https://github.com/dkastl)
+- [Thibault Mutabazi](https://github.com/eyewritecode)
+- [Ko Nagase](https://github.com/sanak)
+- ... [and others](https://github.com/gtt-project/redmine_admissions/graphs/contributors)
 
 ## LICENSE
 
-GPL v3.0
+This program is free software. See [LICENSE](LICENSE) for more information.
