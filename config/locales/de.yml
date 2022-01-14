@@ -1,0 +1,24 @@
+label_admission_disabled: Nicht möglich - selbständiges Beitreten ist nicht erlaubt
+redmine_admissions:
+  projects_form_hook:
+    hint_needs_public_project: Voraussetzung für das eigenständige Beitreten ist zudem,
+      dass das Projekt öffentlich ist!
+  projects_show_sidebar_bottom_hook:
+    switch_to_role: Meine Rolle in %{name} ändern
+    generic_info: Diesem Projekt können andere Benutzer als %{roles} ohne die Unterstützung
+      eines Administrators beitreten.
+    heading: Zugang
+    join: Diesem Projekt beitreten
+    join_as: Diesem Projekt als %{name} beitreten
+    join_info: 'Um diesem Projekt beizutreten, klicken Sie bitte unten:'
+    leave_info: 'Sie sind derzeit Mitglied in diesem Projekt. Um es zu verlassen,
+      klicken Sie auf den Link unten:'
+    leave: Dieses Projekt verlassen
+    change: Ändern
+    change_role_info: 'Um Ihre Rolle in diesem Projekt zu ändern, klicken Sie bitte
+      hier:'
+    login_info: 'Um an diesem Projekt teilzunehmen, melden Sie sich bitte an oder
+      registrieren Sie zuerst ein neues Konto:'
+field_admission_assigned_role: Rolle für neue Benutzer, die diesem Projekt beitreten
+label_admission: Selbstständiges Beitreten
+label_admission_roles: Verfügbare Rollen für neue Benutzer, die diesem Projekt beitreten
