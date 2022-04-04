@@ -22,7 +22,7 @@ bundle install
 bundle exec rake redmine:plugins:migrate
 ```
 
-After restarting Redmine, you should be able to see the Redmine Chatwoot plugin in the Plugins page.
+After restarting Redmine, you should be able to see the Redmine Admissions plugin in the Plugins page.
 
 More information on installing (and uninstalling) Redmine plugins can be found here: http://www.redmine.org/wiki/redmine/Plugins
 
