@@ -36,5 +36,3 @@ module RedmineAdmissions
     can_leave?(project, user: user)
   end
 end
-
-require 'redmine_admissions/view_hooks'
