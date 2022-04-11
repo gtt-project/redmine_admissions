@@ -7,6 +7,7 @@ if Rails.version > '6.0' && Rails.autoloaders.zeitwerk_enabled?
     RedmineAdmissions.setup
   end
 else
+  require 'redmine_admissions'
   Rails.configuration.to_prepare do
     RedmineAdmissions.setup
   end
