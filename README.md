@@ -4,7 +4,7 @@ This plugin allows users to self-join selected Projects.
 
 ## Requirements
 
- - Redmine >= 3.4.0
+ - Redmine >= 4.0.0
 
 ## Installation
 
@@ -35,6 +35,9 @@ TBD
 The GTT Project appreciates any [contributions](https://github.com/gtt-project/.github/blob/main/CONTRIBUTING.md)! Feel free to contact us for [reporting problems and support](https://github.com/gtt-project/.github/blob/main/CONTRIBUTING.md).
 
 ## Version History
+
+- 2.0.0 Support Redmine 5.0 and drop Redmine <= 3.4 support
+- 1.2.0 Publish on GitHub
 
 See [all releases](https://github.com/gtt-project/redmine_admissions/releases) with release notes.
 

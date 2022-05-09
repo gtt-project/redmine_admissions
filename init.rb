@@ -19,8 +19,8 @@ Redmine::Plugin.register :redmine_admissions do
   author_url 'https://github.com/georepublic'
   url 'https://github.com/gtt-project/redmine_admissions'
   description 'Allows users to self-join selected Projects'
-  version '1.2.0'
+  version '2.0.0'
 
-  requires_redmine version_or_higher: '3.4.0'
+  requires_redmine version_or_higher: '4.0.0'
 
 end
