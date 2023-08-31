@@ -1,14 +1,20 @@
 ja:
   field_admission_assigned_role: このプロジェクトに参加する新規ユーザーのロール
+  label_admission: ユーザー自身による参加
+  label_admission_roles: このプロジェクトに参加する新規ユーザーが利用可能なロール
   label_admission_disabled: なし - ユーザー自身による参加は不許可
 
   redmine_admissions:
     projects_form_hook:
       hint_needs_public_project: ユーザー自身が参加するにはプロジェクトが公開されている必要があります！
     projects_show_sidebar_bottom_hook:
-      generic_info: このプロジェクトには %{roles} に従ってシステム管理者による手続き無しに他のユーザーが参加できます。
+      change: 変更
+      change_role_info: "このプロジェクトの参加ロールを変更するには下記リンクをクリックしてください："
+      switch_to_role: "自分のロールを %{name} に変更する"
+      generic_info: このプロジェクトにはシステム管理者による手続き無しに他のユーザーが %{roles} として参加できます。
       heading: 参加登録
-      join: このプロジェクトに参加
+      join: このプロジェクトに参加する
+      join_as: このプロジェクトに %{name} として参加する
       join_info: "このプロジェクトに参加するには下記リンクをクリックしてください："
       leave: このプロジェクトを離脱する
       leave_info: "あなたは現在このプロジェクトのメンバーです。離脱するには下記リンクをクリックしてください："
