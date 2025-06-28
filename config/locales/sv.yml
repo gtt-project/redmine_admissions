@@ -1,0 +1,24 @@
+field_admission_assigned_role: Roll för nya användare som ansluter sig till detta
+  projekt
+label_admission: Själva anslutningen
+label_admission_roles: Tillgängliga roller för nya användare som ansluter sig till
+  detta projekt
+label_admission_disabled: Ingen - självanslutning är inte tillåten
+redmine_admissions:
+  projects_form_hook:
+    hint_needs_public_project: Self-joining kräver också att projektet är offentligt!
+  projects_show_sidebar_bottom_hook:
+    change: Ändra
+    change_role_info: 'Klicka nedan för att ändra din roll i detta projekt:'
+    switch_to_role: Ändra min roll till %{name}
+    generic_info: Detta projekt kan anslutas av andra användare som %{roles} utan
+      hjälp av en administratör.
+    heading: Inträde
+    join: Gå med i detta projekt
+    join_as: Delta i detta projekt som en %{name}
+    join_info: 'Klicka nedan för att ansluta dig till projektet:'
+    leave: Lämna detta projekt
+    leave_info: 'Du är för närvarande medlem i detta projekt. För att lämna det, klicka
+      på länken nedan:'
+    login_info: 'För att delta i detta projekt, vänligen logga in eller registrera
+      ett nytt konto först:'
